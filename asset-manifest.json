@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/rohan-ghosh-portfolio/static/css/main.52919595.css",
-    "main.js": "/rohan-ghosh-portfolio/static/js/main.1cb3faa1.js",
-    "index.html": "/rohan-ghosh-portfolio/index.html",
-    "main.52919595.css.map": "/rohan-ghosh-portfolio/static/css/main.52919595.css.map",
-    "main.1cb3faa1.js.map": "/rohan-ghosh-portfolio/static/js/main.1cb3faa1.js.map"
+    "main.css": "./static/css/main.52919595.css",
+    "main.js": "./static/js/main.29e63798.js",
+    "index.html": "./index.html",
+    "main.52919595.css.map": "./static/css/main.52919595.css.map",
+    "main.29e63798.js.map": "./static/js/main.29e63798.js.map"
   },
   "entrypoints": [
     "static/css/main.52919595.css",
-    "static/js/main.1cb3faa1.js"
+    "static/js/main.29e63798.js"
   ]
 }
