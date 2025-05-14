@@ -129,28 +129,28 @@ const ProjectCarousel = () => {
       id: 1,
       title: "YUM Brands",
       description: "Technical Specialist working on KFC, Pizza Hut, and Taco Bell platforms",
-      image: "/assets/yum-project.jpg",
+      image: "./assets/yum-project.jpg",
       technologies: ["Node.js", "React", "AWS"]
     },
     {
       id: 2,
       title: "HID Global",
       description: "Mobile access control system using Apple Wallet integration",
-      image: "/assets/hid-project.jpg",
+      image: "./assets/hid-project.jpg",
       technologies: ["Node.js", "Apple Wallet API", "PACS"]
     },
     {
       id: 3,
       title: "AWAK Medical",
       description: "Dialysis patient management system backend services",
-      image: "/assets/awak-project.jpg",
+      image: "./assets/awak-project.jpg",
       technologies: ["Node.js", "AWS", "Microservices"]
     },
     {
       id: 4,
       title: "Licious",
       description: "E-commerce platform for meat and seafood products",
-      image: "/assets/licious-project.jpg",
+      image: "./assets/licious-project.jpg",
       technologies: ["Node.js", "React", "Performance Optimization"]
     }
   ];

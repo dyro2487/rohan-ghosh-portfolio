@@ -237,7 +237,7 @@ const HeroWithProfile = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <img 
-            src="/assets/profile.jpg" 
+            src="./assets/profile.jpg" 
             alt={`${personalData.name} - ${personalData.position}`}
             loading="eager"
           />
