@@ -183,7 +183,7 @@ const CloseButton = styled.button`
 
 const CVSection = () => {
   const [showPreview, setShowPreview] = useState(false);
-  const cvFile = "/assets/Rohan_Ghosh_CV.pdf";
+  const cvFile = "./assets/Rohan_Ghosh_CV.pdf";
   
   const summaryData = [
     {
