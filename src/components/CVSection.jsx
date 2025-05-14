@@ -111,7 +111,7 @@ const CVSection = () => {
     {
       icon: <FaGraduationCap />,
       title: "Education",
-      content: "B.Tech in Computer Science from CMRIT (VTU) and PG Diploma in Advanced Computing from CDAC."
+      content: "B.Tech in ECE from CMRIT (VTU) and PG Diploma in Advanced Computing from CDAC."
     },
     {
       icon: <FaCode />,

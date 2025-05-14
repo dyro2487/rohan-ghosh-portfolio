@@ -63,7 +63,7 @@ export const personalData = {
       degree: "Bachelor Of Technology",
       institution: "CMRIT(VTU)",
       period: "2011 - 2015",
-      field: "Computer Science And Engineering"
+      field: "ECE (Electronics and Communication Engineering)"
     },
     {
       id: 2,
