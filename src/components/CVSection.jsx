@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { FaFilePdf, FaDownload, FaBriefcase, FaGraduationCap, FaCode } from 'react-icons/fa';
+import { 
+  FaFilePdf, 
+  FaDownload, 
+  FaBriefcase, 
+  FaGraduationCap, 
+  FaCode, 
+  FaEye,
+  FaTimes 
+} from 'react-icons/fa';
 
 const CVContainer = styled.section`
   padding: 5rem 2rem;
@@ -48,6 +56,18 @@ const CVIcon = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+`;
+
 const CVButton = styled.a`
   display: inline-flex;
   align-items: center;
@@ -57,11 +77,34 @@ const CVButton = styled.a`
   padding: 0.8rem 1.5rem;
   border-radius: 6px;
   text-decoration: none;
-  margin-top: 1.5rem;
   transition: all 0.3s ease;
+  flex: 1;
+  justify-content: center;
+  text-align: center;
 
   &:hover {
     background-color: #005fa3;
+    transform: translateY(-2px);
+  }
+`;
+
+const PreviewButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  justify-content: center;
+
+  &:hover {
+    background-color: #e0e0e0;
     transform: translateY(-2px);
   }
 `;
@@ -98,8 +141,48 @@ const SummaryText = styled.p`
   line-height: 1.6;
 `;
 
+const PreviewModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const PDFPreview = styled.iframe`
+  width: 90%;
+  height: 90%;
+  border: none;
+  border-radius: 8px;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+`;
+
 const CVSection = () => {
-  // Replace with your actual CV file path
+  const [showPreview, setShowPreview] = useState(false);
   const cvFile = "/assets/Rohan_Ghosh_CV.pdf";
   
   const summaryData = [
@@ -119,6 +202,15 @@ const CVSection = () => {
       content: "Node.js, React, AWS, Docker, MongoDB, PostgreSQL, Kafka, Redis, and more."
     }
   ];
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = cvFile;
+    link.download = "Rohan_Ghosh_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <CVContainer id="cv">
@@ -142,11 +234,17 @@ const CVSection = () => {
           <CVIcon>
             <FaFilePdf />
           </CVIcon>
-          <h3>Download My CV</h3>
+          <h3>View My CV</h3>
           <p>Get a comprehensive overview of my skills and experience</p>
-          <CVButton href={cvFile} download="Rohan_Ghosh_Resume.pdf">
-            <FaDownload /> Download PDF
-          </CVButton>
+          
+          <ButtonGroup>
+            <PreviewButton onClick={() => setShowPreview(true)}>
+              <FaEye /> Preview
+            </PreviewButton>
+            <CVButton onClick={handleDownload}>
+              <FaDownload /> Download
+            </CVButton>
+          </ButtonGroup>
         </CVDownloadCard>
 
         <CVSummary>
@@ -167,6 +265,19 @@ const CVSection = () => {
           ))}
         </CVSummary>
       </CVContent>
+
+      {showPreview && (
+        <PreviewModal>
+          <PDFPreview 
+            src={`${cvFile}#view=FitH`} 
+            title="CV Preview"
+            aria-label="CV Preview"
+          />
+          <CloseButton onClick={() => setShowPreview(false)}>
+            <FaTimes /> Close Preview
+          </CloseButton>
+        </PreviewModal>
+      )}
     </CVContainer>
   );
 };
